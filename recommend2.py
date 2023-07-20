@@ -57,7 +57,7 @@ with header:
   st.write("Recommend")
 
 with nav:
-  with streamlit_analytics.track():
+  with streamlit_analytics.track(unsafe_password=st.secrets["password_analytic"]):
     streamlit_analytics.start_tracking()
 
     st.sidebar.header("Your persona ...")
@@ -102,5 +102,3 @@ with tab4:
   st.write(dfPlace[dfPlace['tourist'] == tourist])
   # res = recomendation(tourist_sim,topk=10)
   # st.write(res)
-
-streamlit_analytics.track(unsafe_password=st.secrets["password_analytic"])

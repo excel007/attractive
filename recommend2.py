@@ -72,26 +72,6 @@ with nav:
     
     streamlit_analytics.stop_tracking()
 
-# statcounter
-  # # st.sidebar.markdown(
-  #   """
-  #     <!-- Default Statcounter code for Recommend 2
-  #     https://recommend2py.streamlit.app/ -->
-  #     <script type="text/javascript">
-  #     var sc_project=12902377; 
-  #     var sc_invisible=0; 
-  #     var sc_security="190d2ab5"; 
-  #     var scJsHost = "https://";
-  #     document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
-  #     "statcounter.com/counter/counter.js'></"+"script>");
-  #     </script>
-  #     <noscript><div class="statcounter"><a title="Web Analytics"
-  #     href="https://statcounter.com/" target="_blank"><img class="statcounter"
-  #     src="https://c.statcounter.com/12902377/0/190d2ab5/0/" alt="Web Analytics"
-  #     referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
-  #     <!-- End of Statcounter Code -->
-  #   """,unsafe_allow_html=True)
-
 st.divider()
 tab4 = st.container()
 with tab4:

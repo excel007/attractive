@@ -2,6 +2,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.decomposition import NMF
+import streamlit_analytics
 
 df = pd.read_csv('data/tourist_dataset.csv')
 
@@ -56,15 +57,40 @@ with header:
   st.write("Recommend")
 
 with nav:
-  st.sidebar.header("Your persona ...")
-  gender = st.sidebar.radio("Gender",('ชาย','หญิง'))
-  age = st.sidebar.slider("Age ",15,99)
-  education = st.sidebar.selectbox("Education level",('ประถมศึกษา','มัธยมศึกษา','ปวช./ปวส.','ปริญญาตรี','ปริญญาโท','ปริญญาเอก'))
-  job = st.sidebar.selectbox("Job",['นักเรียน/นักศึกษา','รับราชการ/รัฐวิสาหกิจ','เกษตรกรรม','พนักงาน/ลูกจ้างเอกชน','รับจ้างทั่วไป/บริการ','แม่บ้าน/พ่อบ้าน','ค้าขาย/ธุรกิจส่วนตัว','อื่นๆ'])
-  prov = pd.read_csv('https://raw.githubusercontent.com/kongvut/thai-province-data/master/csv/thai_provinces.csv')
-  homeland = st.sidebar.selectbox("ภูมิลำเนา",prov['name_th'])
-  homecurrent = st.sidebar.selectbox("ที่อยู่ปัจจุบัน",prov['name_th'])
-  tourwith = st.sidebar.selectbox('ชอบไปเที่ยวกับ',['เที่ยวคนเดียว','เที่ยวกับครอบครัว','เที่ยวกับเพื่อน/แฟน','อื่นๆ'])
+  with streamlit_analytics.track():
+    streamlit_analytics.start_tracking()
+
+    st.sidebar.header("Your persona ...")
+    gender = st.sidebar.radio("Gender",('ชาย','หญิง'))
+    age = st.sidebar.slider("Age ",15,99)
+    education = st.sidebar.selectbox("Education level",('ประถมศึกษา','มัธยมศึกษา','ปวช./ปวส.','ปริญญาตรี','ปริญญาโท','ปริญญาเอก'))
+    job = st.sidebar.selectbox("Job",['นักเรียน/นักศึกษา','รับราชการ/รัฐวิสาหกิจ','เกษตรกรรม','พนักงาน/ลูกจ้างเอกชน','รับจ้างทั่วไป/บริการ','แม่บ้าน/พ่อบ้าน','ค้าขาย/ธุรกิจส่วนตัว','อื่นๆ'])
+    prov = pd.read_csv('https://raw.githubusercontent.com/kongvut/thai-province-data/master/csv/thai_provinces.csv')
+    homeland = st.sidebar.selectbox("ภูมิลำเนา",prov['name_th'])
+    homecurrent = st.sidebar.selectbox("ที่อยู่ปัจจุบัน",prov['name_th'])
+    tourwith = st.sidebar.selectbox('ชอบไปเที่ยวกับ',['เที่ยวคนเดียว','เที่ยวกับครอบครัว','เที่ยวกับเพื่อน/แฟน','อื่นๆ'])
+    
+    streamlit_analytics.stop_tracking()
+
+# statcounter
+  # # st.sidebar.markdown(
+  #   """
+  #     <!-- Default Statcounter code for Recommend 2
+  #     https://recommend2py.streamlit.app/ -->
+  #     <script type="text/javascript">
+  #     var sc_project=12902377; 
+  #     var sc_invisible=0; 
+  #     var sc_security="190d2ab5"; 
+  #     var scJsHost = "https://";
+  #     document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+  #     "statcounter.com/counter/counter.js'></"+"script>");
+  #     </script>
+  #     <noscript><div class="statcounter"><a title="Web Analytics"
+  #     href="https://statcounter.com/" target="_blank"><img class="statcounter"
+  #     src="https://c.statcounter.com/12902377/0/190d2ab5/0/" alt="Web Analytics"
+  #     referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+  #     <!-- End of Statcounter Code -->
+  #   """,unsafe_allow_html=True)
 
 st.divider()
 tab4 = st.container()
@@ -96,3 +122,5 @@ with tab4:
   st.write(dfPlace[dfPlace['tourist'] == tourist])
   # res = recomendation(tourist_sim,topk=10)
   # st.write(res)
+
+streamlit_analytics.track(unsafe_password=st.secrets["password_analytic"])

@@ -75,7 +75,7 @@ with nav:
 st.divider()
 tab4 = st.container()
 with tab4:
-  filter = ('999',gender,str(age),education,job,homeland,tourwith)
+  filter = (gender,str(age),education,job,homeland,tourwith)
   features = ' '.join(filter)
 
   dfTourist_find = pd.DataFrame({'tourist':[999],'gender':[gender],'age':[age],'education':[education],'job':[job],'homeland':[homeland],'with':[tourwith],'features':[features]})

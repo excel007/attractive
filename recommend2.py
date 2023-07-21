@@ -40,7 +40,7 @@ similarity = []
 dfnew = dfTourist.transpose()
 
 features = ['tourist','gender','age','education','job','homeland','with']
-dfTourist['features'] = dfTourist['gender'].apply(str) + ' ' + dfTourist['education'].apply(str) + ' ' + dfTourist['job'].apply(str) + ' ' + dfTourist['homeland'].apply(str) + ' ' + dfTourist['with'].apply(str)
+dfTourist['features'] = dfTourist['gender'].apply(str) + ' ' + dfTourist['age'].apply(str) + ' ' + dfTourist['education'].apply(str) + ' ' + dfTourist['job'].apply(str) + ' ' + dfTourist['homeland'].apply(str) + ' ' + dfTourist['with'].apply(str)
 cv = CountVectorizer(tokenizer=lambda x: x.split(' ')) #แบ่งด้วยช่องว่าง
 count_matrix = cv.fit_transform(dfTourist['features'])
 # count_matrix.toarray()

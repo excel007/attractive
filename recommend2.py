@@ -96,9 +96,9 @@ with tab4:
   tourist = sorted_similar_tourist[0][0]
   st.write(dfTourist[dfTourist['tourist']==tourist])
   st.write('may like these ...')
-  similar_tourist = list(enumerate(cosine_sim[tourist]))
-  sorted_similar_tourist = sorted(similar_tourist,key=lambda x:x[1],reverse=True)[1:]
-  tourist_sim = sorted_similar_tourist[0][0]
+  # similar_tourist = list(enumerate(cosine_sim[tourist]))
+  # sorted_similar_tourist = sorted(similar_tourist,key=lambda x:x[1],reverse=True)[1:]
+  # tourist_sim = sorted_similar_tourist[0][0]
   st.write(dfPlace[dfPlace['tourist'] == tourist])
   # res = recomendation(tourist_sim,topk=10)
   # st.write(res)
